@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    /* Healthcare Primary Colors */
-    --clinic-primary: #0ea5e9;
-    --clinic-secondary: #6366f1;
-    --clinic-accent: #22d3ee;
-    
-    /* Glassmorphism Background */
-    --clinic-gradient: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 50%, #6366f1 100%);
-}
-
-.glass-bg {
-    background: var(--clinic-gradient);
-    min-height: 100vh;
+@layer components {
+    /* This creates a reusable class for your healthcare background */
+    .glass-medical-gradient {
+        @apply bg-gradient-to-br from-clinic-accent via-clinic-primary to-clinic-secondary min-h-screen;
+    }
 }

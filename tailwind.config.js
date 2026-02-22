@@ -15,6 +15,13 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                clinic: {
+                    primary: '#0ea5e9',   // Deep Cyan
+                    secondary: '#6366f1', // Indigo
+                    accent: '#22d3ee',    // Bright Teal
+                },
+            },
         },
     },
 
