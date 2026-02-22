@@ -36,12 +36,8 @@ export default function Register() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                             </svg>
                         </div>
-                        <h1 className="text-4xl font-extrabold text-white tracking-tight leading-tight">Join Us</h1>
-                        <p className="text-white/80 mt-4 text-lg font-medium">Create your account to start booking appointments with our expert doctors.</p>
-                        
-                        <div className="mt-auto pt-8 hidden md:block">
-                            <p className="text-sm text-white/60 font-medium italic">"Your health is our top priority."</p>
-                        </div>
+                        <h1 className="text-4xl font-extrabold text-white tracking-tight leading-tight">Clinic Appointment</h1>
+                        <p className="text-white/80 mt-4 text-lg font-medium">Create your account to start booking.</p>
                     </div>
 
                     {/* Right Side: The Form */}
