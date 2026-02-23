@@ -5,10 +5,10 @@ export default function AuthenticatedLayout({ user, header, children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const navItems = [
-        { label: 'Dashboard', href: route('dashboard'), icon: '📊' },
-        { label: 'My Appointments', href: '#', icon: '📅' },
-        { label: 'Medical Records', href: '#', icon: '📁' },
-        { label: 'Profile', href: route('profile.edit'), icon: '👤' },
+        { label: 'Dashboard', href: route('dashboard')},
+        { label: 'My Appointments', href: '#'},
+        { label: 'Medical Records', href: '#'},
+        { label: 'Profile', href: route('profile.edit')},
     ];
 
     return (
@@ -84,7 +84,6 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             as="button"
                             className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-red-400 hover:bg-red-500/10 transition-all text-sm uppercase tracking-wide"
                         >
-                            <span>🚪</span>
                             Logout
                         </Link>
                     </div>
