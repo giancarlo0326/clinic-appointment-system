@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer components {
-    /* This creates a reusable class for your healthcare background */
     .glass-medical-gradient {
-        @apply bg-gradient-to-br from-clinic-accent via-clinic-primary to-clinic-secondary min-h-screen;
+        /* This matches the deep blue background in your screenshots */
+        background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+        background-attachment: fixed;
     }
 }
-
