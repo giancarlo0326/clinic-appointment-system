@@ -28,7 +28,7 @@ export default function ForgotPassword({ status }) {
                         Reset <span className="text-blue-400">Password</span>
                     </h1>
                     <p className="text-blue-50/70 mt-3 text-sm leading-relaxed">
-                        Forgot your password? No problem. Just let us know your email address and we will email you a password reset link.
+                        Enter registered email and we will send a link for password recovery.
                     </p>
                 </div>
 
