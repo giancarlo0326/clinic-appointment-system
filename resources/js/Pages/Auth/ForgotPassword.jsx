@@ -60,7 +60,7 @@ export default function ForgotPassword({ status }) {
                         disabled={processing}
                         className="w-full py-3.5 md:py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 hover:shadow-blue-500/20 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 tracking-wider uppercase text-xs md:text-sm"
                     >
-                        {processing ? 'Sending Link...' : 'Email Password Reset Link'}
+                        {processing ? 'Sending Link...' : 'Send Link'}
                     </button>
                 </form>
 

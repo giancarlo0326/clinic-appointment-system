@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { Head, Link, useForm, usePage } from '@inertiajs/react';
+import GuestNavbar from '@/Components/GuestNavbar';
 
 export default function Login({ status, canResetPassword }) {
+    const { auth } = usePage().props;
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -9,9 +11,7 @@ export default function Login({ status, canResetPassword }) {
     });
 
     useEffect(() => {
-        return () => {
-            reset('password');
-        };
+        return () => reset('password');
     }, []);
 
     const submit = (e) => {
@@ -20,18 +20,13 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        // Added 'glass-medical-gradient' to the main container
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Log in" />
+            
+            {/* Navbar without Sign In/Sign Up links */}
+            <GuestNavbar auth={auth} showAuthLinks={false} />
 
-            {/* Logo */}
-            <Link href="/" className="absolute top-6 left-6 text-white font-extrabold text-xl md:text-2xl tracking-tight flex items-center gap-2 z-10">
-                <span className="text-blue-400 text-2xl md:text-3xl">✚</span> 
-                <span>CLINICARE</span>
-            </Link>
-
-            {/* Login Card - Using the Glassmorphism style from your Register/Dashboard */}
-            <div className="w-full max-w-md p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl z-10">
+            <div className="w-full max-w-md p-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl z-10 mt-20">
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-extrabold text-white tracking-tight">
                         Welcome <span className="text-blue-400">Back</span>
@@ -73,19 +68,6 @@ export default function Login({ status, canResetPassword }) {
                         {errors.password && <p className="text-red-300 text-xs mt-1 ml-1">{errors.password}</p>}
                     </div>
 
-                    <div className="flex items-center px-1">
-                        <label className="flex items-center cursor-pointer group">
-                            <input
-                                type="checkbox"
-                                name="remember"
-                                checked={data.remember}
-                                onChange={(e) => setData('remember', e.target.checked)}
-                                className="w-4 h-4 rounded border-white/20 bg-white/10 text-blue-600 focus:ring-blue-500 focus:ring-offset-0"
-                            />
-                            <span className="ml-2 text-sm text-blue-50/70 group-hover:text-white transition-colors">Remember me</span>
-                        </label>
-                    </div>
-
                     <button
                         type="submit"
                         disabled={processing}
@@ -106,4 +88,4 @@ export default function Login({ status, canResetPassword }) {
             </div>
         </div>
     );
-}
+}   
