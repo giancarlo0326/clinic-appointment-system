@@ -77,7 +77,7 @@ export default function Register() {
                         </div>
                         <div className="space-y-1.5">
                             <label className="block text-xs md:text-sm font-semibold text-white ml-1">Email Address</label>
-                            <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all text-sm" placeholder="name@example.com" onChange={(e) => setData('email', e.target.value)} />
+                            <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all text-sm" placeholder="patient@email.com" onChange={(e) => setData('email', e.target.value)} />
                         </div>
                         <div className="space-y-1.5 relative">
                             <label className="block text-xs md:text-sm font-semibold text-white ml-1">Password</label>

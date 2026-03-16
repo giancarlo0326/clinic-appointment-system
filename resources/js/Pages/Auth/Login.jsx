@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword }) {
                     {/* Your existing fields exactly as they were */}
                     <div>
                         <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Email Address</label>
-                        <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all" placeholder="Enter your email" onChange={(e) => setData('email', e.target.value)} />
+                        <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all" placeholder="patient@email.com" onChange={(e) => setData('email', e.target.value)} />
                         {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
                     </div>
 
