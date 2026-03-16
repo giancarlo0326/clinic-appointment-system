@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
-import GuestNavbar from '@/Components/GuestNavbar'; // Ensure this path is correct
+import GuestNavbar from '@/Components/GuestNavbar';
+import GlassCard from '@/Components/GlassCard';
 
 export default function Register() {
-    const { auth } = usePage().props; // Get auth status from Inertia props
+    const { auth } = usePage().props;
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [modalContent, setModalContent] = useState(null);
@@ -55,34 +56,29 @@ export default function Register() {
     );
 
     return (
-        <div className="relative min-h-screen flex flex-col items-center justify-start md:justify-center overflow-x-hidden px-6 py-12 pt-28 md:pt-12 glass-medical-gradient">
+        <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Register" />
 
-            {/* Calling the GuestNavbar Component */}
             <GuestNavbar auth={auth} showAuthLinks={false} />
 
-            <div className="relative w-full max-w-[360px] xs:max-w-md md:max-w-2xl p-6 md:p-10 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl z-10 transition-all duration-500 mt-20">
+            <GlassCard className="max-w-[360px] xs:max-w-md md:max-w-2xl mt-20">
                 <div className="text-center mb-8">
                     <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
                         Create <span className="text-blue-400">Account</span>
                     </h1>
-                    <p className="text-blue-50/70 mt-2 text-sm font-medium">Join Clinicare to start booking appointments.</p>
+                    <p className="text-blue-50/80 mt-2 text-sm font-medium">Join Clinicare to start booking appointments.</p>
                 </div>
 
                 <form onSubmit={submit} className="space-y-5 md:space-y-6">
-                    {/* ... (Keep your existing form fields here) ... */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 md:gap-y-5">
-                        {/* Name Field */}
                         <div className="space-y-1.5">
                             <label className="block text-xs md:text-sm font-semibold text-white ml-1">Full Name</label>
                             <input type="text" value={data.name} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all text-sm" placeholder="Patient Name" onChange={(e) => setData('name', e.target.value)} />
                         </div>
-                        {/* Email Field */}
                         <div className="space-y-1.5">
                             <label className="block text-xs md:text-sm font-semibold text-white ml-1">Email Address</label>
                             <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white/20 transition-all text-sm" placeholder="name@example.com" onChange={(e) => setData('email', e.target.value)} />
                         </div>
-                        {/* Password Fields */}
                         <div className="space-y-1.5 relative">
                             <label className="block text-xs md:text-sm font-semibold text-white ml-1">Password</label>
                             <div className="relative">
@@ -107,8 +103,14 @@ export default function Register() {
                         {processing ? 'Creating Account...' : 'Sign Up'}
                     </button>
                 </form>
-            </div>
-            {/* ... Rest of your code */}
+                <div className="mt-8 text-center border-t border-white/10 pt-6">
+                    <p className="text-sm text-blue-50/70">Already have an account? <Link href={route('login')} className="text-white font-bold underline">Sign in</Link></p>
+                </div>
+            </GlassCard>
+
+            {/* Background Decorations */}
+            <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
     );
 }
