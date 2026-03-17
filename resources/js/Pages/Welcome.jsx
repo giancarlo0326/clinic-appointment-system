@@ -39,33 +39,6 @@ export default function Welcome({ auth }) {
                             Book an Appointment
                         </Link>
                     </div>
-
-                    {/* 4. Trust Badges */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-16 w-full max-w-4xl">
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-6 rounded-2xl flex items-center gap-4 text-white shadow-lg animate-fade-in-up delay-2 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
-                            <div className="text-3xl md:text-4xl shrink-0">📅</div>
-                            <div>
-                                <h3 className="font-bold text-sm md:text-lg">24/7 Booking</h3>
-                                <p className="text-[10px] md:text-sm text-blue-100">Schedule at your convenience.</p>
-                            </div>
-                        </div>
-                        
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-6 rounded-2xl flex items-center gap-4 text-white shadow-lg animate-fade-in-up delay-2 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
-                            <div className="text-3xl md:text-4xl shrink-0">🩺</div>
-                            <div>
-                                <h3 className="font-bold text-sm md:text-lg">Top Specialists</h3>
-                                <p className="text-[10px] md:text-sm text-blue-100">Expert, compassionate care.</p>
-                            </div>
-                        </div>
-
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 p-4 md:p-6 rounded-2xl flex items-center gap-4 text-white shadow-lg sm:col-span-2 md:col-span-1 animate-fade-in-up delay-3 hover:bg-white/20 transition-all duration-300 hover:translate-y-[-5px]">
-                            <div className="text-3xl md:text-4xl shrink-0">🔒</div>
-                            <div>
-                                <h3 className="font-bold text-sm md:text-lg">Secure Records</h3>
-                                <p className="text-[10px] md:text-sm text-blue-100">100% private and encrypted.</p>
-                            </div>
-                        </div>
-                    </div>
                 </main>
             </div>
         </>
