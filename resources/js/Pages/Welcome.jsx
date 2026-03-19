@@ -10,22 +10,17 @@ export default function Welcome({ auth }) {
 
             <div className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
                 
-                {/* Static Background Image */}
                 <div 
                     className="absolute inset-0 bg-cover bg-center z-[-2]" 
                     style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/031/691/404/non_2x/ideal-healthcare-background-with-surrealist-blurry-hospital-scene-ai-generative-free-photo.jpg')" }}
                 ></div>
 
-                {/* Dark Blue Overlay */}
                 <div className="absolute inset-0 bg-blue-900/70 z-[-1]"></div>
 
-                {/* Navbar Component */}
                 <GuestNavbar auth={auth} />
 
-                {/* Main Content Wrapped in Animation */}
                 <PageWrapper className="relative z-10 w-full max-w-5xl px-4 md:px-6 flex flex-col items-center justify-center mt-20 mb-10">
                     
-                    {/* Using GlassCard for the Hero section */}
                     <GlassCard className="p-8 sm:p-12 md:p-16 text-center max-w-3xl">
                         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 md:mb-6 drop-shadow-md tracking-tight leading-tight">
                             Your Health, <span className="text-blue-300">Our Wealth.</span>

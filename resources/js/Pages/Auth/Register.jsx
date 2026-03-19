@@ -7,11 +7,11 @@ import PageWrapper from '@/Components/PageWrapper'; // Import animation wrapper
 export default function Register() {
     const { auth } = usePage().props;
     const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [notification, setNotification] = useState({ message: '', visible: false });
 
+    // Removed password_confirmation from the form state
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '', email: '', password: '', password_confirmation: '', terms: false,
+        name: '', email: '', password: '', terms: false,
     });
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export default function Register() {
     }, [errors]);
 
     useEffect(() => {
-        return () => reset('password', 'password_confirmation');
+        return () => reset('password');
     }, []);
 
     const showToast = (msg) => {
@@ -51,7 +51,7 @@ export default function Register() {
             <GuestNavbar auth={auth} showAuthLinks={false} />
 
             <PageWrapper>
-                <GlassCard className="max-w-md mt-20">
+                <GlassCard className="w-full max-w-md mt-20">
                     <div className="text-center mb-8">
                         <h1 className="text-3xl font-extrabold text-white tracking-tight">
                             Create <span className="text-blue-400">Account</span>
@@ -59,46 +59,70 @@ export default function Register() {
                         <p className="text-blue-50/80 mt-2 font-medium">to clinicare, log in to your account to manage appointments.</p>
                     </div>
 
-                    <form onSubmit={submit} className="space-y-5 md:space-y-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 md:gap-y-5">
-                            <div className="space-y-1.5">
-                                <label className="block text-xs md:text-sm font-semibold text-white ml-1">Full Name</label>
-                                <input type="text" value={data.name} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="Patient Name" onChange={(e) => setData('name', e.target.value)} />
-                            </div>
-                            <div className="space-y-1.5">
-                                <label className="block text-xs md:text-sm font-semibold text-white ml-1">Email Address</label>
-                                <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="patient@email.com" onChange={(e) => setData('email', e.target.value)} />
-                            </div>
-                            <div className="space-y-1.5 relative">
-                                <label className="block text-xs md:text-sm font-semibold text-white ml-1">Password</label>
-                                <div className="relative">
-                                    <input type={showPassword ? "text" : "password"} value={data.password} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password', e.target.value)} />
-                                    <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
-                                        <EyeIcon visible={showPassword} />
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="space-y-1.5 relative">
-                                <label className="block text-xs md:text-sm font-semibold text-white ml-1">Confirm Password</label>
-                                <div className="relative">
-                                    <input type={showConfirmPassword ? "text" : "password"} value={data.password_confirmation} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password_confirmation', e.target.value)} />
-                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
-                                        <EyeIcon visible={showConfirmPassword} />
-                                    </button>
-                                </div>
-                            </div>
+                    <form onSubmit={submit} className="space-y-6">
+                        {/* Full Name */}
+                        <div>
+                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Full Name</label>
+                            <input 
+                                type="text" 
+                                value={data.name} 
+                                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                placeholder="Patient Name" 
+                                onChange={(e) => setData('name', e.target.value)} 
+                            />
+                            {errors.name && <p className="text-red-300 text-xs mt-1">{errors.name}</p>}
                         </div>
 
-                        <button type="submit" disabled={processing} className="w-full py-3.5 md:py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 tracking-wider uppercase text-xs md:text-sm">
+                        {/* Email Address */}
+                        <div>
+                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Email Address</label>
+                            <input 
+                                type="email" 
+                                value={data.email} 
+                                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                placeholder="patient@email.com" 
+                                onChange={(e) => setData('email', e.target.value)} 
+                            />
+                            {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
+                        </div>
+
+                        {/* Password */}
+                        <div className="relative">
+                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Password</label>
+                            <div className="relative">
+                                <input 
+                                    type={showPassword ? "text" : "password"} 
+                                    value={data.password} 
+                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                    placeholder="••••••••" 
+                                    onChange={(e) => setData('password', e.target.value)} 
+                                />
+                                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
+                                    <EyeIcon visible={showPassword} />
+                                </button>
+                            </div>
+                            {errors.password && <p className="text-red-300 text-xs mt-1">{errors.password}</p>}
+                        </div>
+
+                        {/* Submit Button */}
+                        <button 
+                            type="submit" 
+                            disabled={processing} 
+                            className="w-full py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 tracking-wider uppercase text-sm"
+                        >
                             {processing ? 'Creating Account...' : 'Sign Up'}
                         </button>
                     </form>
+
                     <div className="mt-8 text-center border-t border-white/10 pt-6">
-                        <p className="text-sm text-blue-50/70">Already have an account? <Link href={route('login')} className="text-white font-bold underline">Sign in</Link></p>
+                        <p className="text-sm text-blue-50/70">
+                            Already have an account? <Link href={route('login')} className="text-white font-bold underline">Sign in</Link>
+                        </p>
                     </div>
                 </GlassCard>
             </PageWrapper>
 
+            {/* Background Decorations */}
             <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
