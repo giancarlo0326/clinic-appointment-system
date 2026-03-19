@@ -1,5 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
-import GuestNavbar from '@/Components/GuestNavbar'; // Make sure this path matches your folder structure
+import GuestNavbar from '@/Components/GuestNavbar';
+import GlassCard from '@/Components/GlassCard'; // Use our new component
+import PageWrapper from '@/Components/PageWrapper'; // Use our new wrapper
 
 export default function Welcome({ auth }) {
     return (
@@ -8,7 +10,7 @@ export default function Welcome({ auth }) {
 
             <div className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden">
                 
-                {/* 1. Static Background Image */}
+                {/* Static Background Image */}
                 <div 
                     className="absolute inset-0 bg-cover bg-center z-[-2]" 
                     style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/031/691/404/non_2x/ideal-healthcare-background-with-surrealist-blurry-hospital-scene-ai-generative-free-photo.jpg')" }}
@@ -20,11 +22,11 @@ export default function Welcome({ auth }) {
                 {/* Navbar Component */}
                 <GuestNavbar auth={auth} />
 
-                {/* 3. Main Content */}
-                <main className="relative z-10 w-full max-w-5xl px-4 md:px-6 flex flex-col items-center justify-center mt-20 mb-10">
+                {/* Main Content Wrapped in Animation */}
+                <PageWrapper className="relative z-10 w-full max-w-5xl px-4 md:px-6 flex flex-col items-center justify-center mt-20 mb-10">
                     
-                    {/* Hero Card */}
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 p-8 sm:p-12 md:p-16 rounded-3xl shadow-2xl text-center w-full max-w-3xl animate-fade-in-up delay-1">
+                    {/* Using GlassCard for the Hero section */}
+                    <GlassCard className="p-8 sm:p-12 md:p-16 text-center max-w-3xl">
                         <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4 md:mb-6 drop-shadow-md tracking-tight leading-tight">
                             Your Health, <span className="text-blue-300">Our Wealth.</span>
                         </h1>
@@ -38,8 +40,8 @@ export default function Welcome({ auth }) {
                         >
                             Book an Appointment
                         </Link>
-                    </div>
-                </main>
+                    </GlassCard>
+                </PageWrapper>
             </div>
         </>
     );
