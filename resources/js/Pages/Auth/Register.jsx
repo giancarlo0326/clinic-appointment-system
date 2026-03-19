@@ -60,7 +60,7 @@ export default function Register() {
                     </div>
 
                     <form onSubmit={submit} className="space-y-6">
-                        {/* Full Name */}
+                
                         <div>
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Full Name</label>
                             <input 
@@ -73,7 +73,6 @@ export default function Register() {
                             {errors.name && <p className="text-red-300 text-xs mt-1">{errors.name}</p>}
                         </div>
 
-                        {/* Email Address */}
                         <div>
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Email Address</label>
                             <input 
@@ -86,7 +85,6 @@ export default function Register() {
                             {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
                         </div>
 
-                        {/* Password */}
                         <div className="relative">
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Password</label>
                             <div className="relative">
@@ -104,13 +102,12 @@ export default function Register() {
                             {errors.password && <p className="text-red-300 text-xs mt-1">{errors.password}</p>}
                         </div>
 
-                        {/* Submit Button */}
                         <button 
                             type="submit" 
                             disabled={processing} 
                             className="w-full py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 tracking-wider uppercase text-sm"
                         >
-                            {processing ? 'Creating Account...' : 'Sign Up'}
+                            {processing ? 'Signing Up...' : 'Sign Up'}
                         </button>
                     </form>
 
@@ -122,7 +119,6 @@ export default function Register() {
                 </GlassCard>
             </PageWrapper>
 
-            {/* Background Decorations */}
             <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
