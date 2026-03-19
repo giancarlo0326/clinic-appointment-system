@@ -63,16 +63,16 @@ export default function Register() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 md:gap-y-5">
                             <div className="space-y-1.5">
                                 <label className="block text-xs md:text-sm font-semibold text-white ml-1">Full Name</label>
-                                <input type="text" value={data.name} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="Patient Name" onChange={(e) => setData('name', e.target.value)} />
+                                <input type="text" value={data.name} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="Patient Name" onChange={(e) => setData('name', e.target.value)} />
                             </div>
                             <div className="space-y-1.5">
                                 <label className="block text-xs md:text-sm font-semibold text-white ml-1">Email Address</label>
-                                <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="patient@email.com" onChange={(e) => setData('email', e.target.value)} />
+                                <input type="email" value={data.email} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="patient@email.com" onChange={(e) => setData('email', e.target.value)} />
                             </div>
                             <div className="space-y-1.5 relative">
                                 <label className="block text-xs md:text-sm font-semibold text-white ml-1">Password</label>
                                 <div className="relative">
-                                    <input type={showPassword ? "text" : "password"} value={data.password} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password', e.target.value)} />
+                                    <input type={showPassword ? "text" : "password"} value={data.password} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password', e.target.value)} />
                                     <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
                                         <EyeIcon visible={showPassword} />
                                     </button>
@@ -81,7 +81,7 @@ export default function Register() {
                             <div className="space-y-1.5 relative">
                                 <label className="block text-xs md:text-sm font-semibold text-white ml-1">Confirm Password</label>
                                 <div className="relative">
-                                    <input type={showConfirmPassword ? "text" : "password"} value={data.password_confirmation} className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-2xl text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password_confirmation', e.target.value)} />
+                                    <input type={showConfirmPassword ? "text" : "password"} value={data.password_confirmation} className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" placeholder="••••••••" onChange={(e) => setData('password_confirmation', e.target.value)} />
                                     <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
                                         <EyeIcon visible={showConfirmPassword} />
                                     </button>
