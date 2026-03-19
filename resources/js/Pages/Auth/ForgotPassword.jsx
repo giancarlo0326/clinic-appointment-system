@@ -17,10 +17,8 @@ export default function ForgotPassword({ status }) {
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Forgot Password" />
 
-            {/* Reusable Navbar - Auth links hidden */}
             <GuestNavbar auth={auth} showAuthLinks={false} />
 
-            {/* Reusable Glass Style Container */}
             <GlassCard className="max-w-[360px] xs:max-w-md md:max-w-lg mt-20">
                 <div className="text-center mb-8">
                     <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">

@@ -56,7 +56,7 @@ export default function Register() {
                         <h1 className="text-3xl font-extrabold text-white tracking-tight">
                             Create <span className="text-blue-400">Account</span>
                         </h1>
-                        <p className="text-blue-50/80 mt-2 font-medium">to manage your appointments.</p>
+                        <p className="text-blue-50/80 mt-2 font-medium">to clinicare, log in to your account to manage appointments.</p>
                     </div>
 
                     <form onSubmit={submit} className="space-y-5 md:space-y-6">

@@ -1,7 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
 import GuestNavbar from '@/Components/GuestNavbar';
-import GlassCard from '@/Components/GlassCard'; // Use our new component
-import PageWrapper from '@/Components/PageWrapper'; // Use our new wrapper
+import GlassCard from '@/Components/GlassCard';
+import PageWrapper from '@/Components/PageWrapper';
 
 export default function Welcome({ auth }) {
     return (
