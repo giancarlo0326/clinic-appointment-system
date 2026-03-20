@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import GuestNavbar from '@/Components/GuestNavbar';
 import GlassCard from '@/Components/GlassCard';
-import PageWrapper from '@/Components/PageWrapper'; // Import animation wrapper
+import PageWrapper from '@/Components/PageWrapper'; 
 
 export default function Register() {
     const { auth } = usePage().props;
     const [showPassword, setShowPassword] = useState(false);
     const [notification, setNotification] = useState({ message: '', visible: false });
 
-    // Removed password_confirmation from the form state
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '', email: '', password: '', terms: false,
     });
@@ -47,72 +46,90 @@ export default function Register() {
 
     return (
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
-            <Head title="Register" />
+            <Head title="Sign Up" />
             <GuestNavbar auth={auth} showAuthLinks={false} />
+            
             <PageWrapper>
                 <GlassCard className="w-full max-w-md mt-20">
                     <div className="text-center mb-8">
-                        <h1 className="text-3xl font-extrabold text-white tracking-tight">
-                            Create <span className="text-blue-400">Account</span>
+                        <h1 className="text-3xl font-black text-slate-900 tracking-tight leading-tight">
+                            Create <span className="text-blue-600">Account</span>
                         </h1>
-                        <p className="text-blue-50/80 mt-2 font-medium">to clinicare, log in to your account to manage appointments.</p>
+                        <p className="text-slate-500 mt-2 font-medium">Join Clinicare to manage your health and appointments.</p>
                     </div>
-                    <form onSubmit={submit} className="space-y-6">
+
+                    {notification.visible && (
+                        <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-700 text-sm font-bold text-center animate-fade-in-up">
+                            {notification.message}
+                        </div>
+                    )}
+
+                    <form onSubmit={submit} className="space-y-5">
                         <div>
-                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Full Name</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Full Name</label>
                             <input 
                                 type="text" 
                                 value={data.name} 
-                                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                className="w-full px-4 py-3 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-2xl shadow-sm text-sm" 
                                 placeholder="Patient Name" 
                                 onChange={(e) => setData('name', e.target.value)} 
                             />
-                            {errors.name && <p className="text-red-300 text-xs mt-1">{errors.name}</p>}
+                            {errors.name && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.name}</p>}
                         </div>
+
                         <div>
-                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Email Address</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Email Address</label>
                             <input 
                                 type="email" 
                                 value={data.email} 
-                                className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                className="w-full px-4 py-3 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-2xl shadow-sm text-sm" 
                                 placeholder="patient@email.com" 
                                 onChange={(e) => setData('email', e.target.value)} 
                             />
-                            {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
+                            {errors.email && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.email}</p>}
                         </div>
+
                         <div className="relative">
-                            <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Password</label>
+                            <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Password</label>
                             <div className="relative">
                                 <input 
                                     type={showPassword ? "text" : "password"} 
                                     value={data.password} 
-                                    className="w-full px-4 py-3 bg-white/10 border border-white/20 text-white pr-12 placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm" 
+                                    className="w-full px-4 py-3 bg-white border border-slate-200 text-slate-900 pr-12 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all rounded-2xl shadow-sm text-sm" 
                                     placeholder="••••••••" 
                                     onChange={(e) => setData('password', e.target.value)} 
                                 />
-                                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors">
+                                <button 
+                                    type="button" 
+                                    onClick={() => setShowPassword(!showPassword)} 
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-600 transition-colors"
+                                >
                                     <EyeIcon visible={showPassword} />
                                 </button>
                             </div>
-                            {errors.password && <p className="text-red-300 text-xs mt-1">{errors.password}</p>}
+                            {errors.password && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.password}</p>}
                         </div>
+
                         <button 
                             type="submit" 
                             disabled={processing} 
-                            className="w-full py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-xl hover:bg-blue-500 transition-all duration-300 active:scale-[0.98] disabled:opacity-50 tracking-wider uppercase text-sm"
+                            className="w-full py-4 bg-blue-600 text-white font-black rounded-2xl shadow-lg shadow-blue-200 hover:bg-blue-700 hover:-translate-y-0.5 transition-all duration-300 active:scale-95 disabled:opacity-50 tracking-widest uppercase text-sm mt-2"
                         >
-                            {processing ? 'Signing Up...' : 'Sign Up'}
+                            {processing ? 'Creating Account...' : 'Sign Up'}
                         </button>
                     </form>
-                    <div className="mt-8 text-center border-t border-white/10 pt-6">
-                        <p className="text-sm text-blue-50/70">
-                            Already have an account? <Link href={route('login')} className="text-white font-bold underline">Sign in</Link>
+
+                    <div className="mt-8 text-center border-t border-slate-100 pt-6">
+                        <p className="text-sm text-slate-500 font-medium">
+                            Already have an account? <Link href={route('login')} className="text-blue-600 font-black hover:underline">Sign in</Link>
                         </p>
                     </div>
                 </GlassCard>
             </PageWrapper>
-            <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            {/* Background elements for visual depth on white theme */}
+            <div className="absolute top-[-10%] right-[-5%] w-[450px] h-[450px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+            <div className="absolute bottom-[-10%] left-[-5%] w-[450px] h-[450px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         </div>
     );
 }

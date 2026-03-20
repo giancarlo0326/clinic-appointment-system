@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* resources/css/app.css */
 @layer components {
     .glass-medical-gradient {
-        /* This matches the deep blue background in your screenshots */
-        background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+        /* A much cleaner, high-end medical gradient */
+        /* Mixes a soft ice-blue with a light steel-blue for professional contrast */
+        background: radial-gradient(circle at top right, #eef2ff, #cbd5e1);
         background-attachment: fixed;
+        min-height: 100vh;
     }
 }
 
