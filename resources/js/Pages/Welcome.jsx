@@ -7,23 +7,10 @@ export default function Welcome({ auth }) {
     return (
         <div className="bg-[#050b1a] min-h-screen">
             <Head title="Welcome to Clinicare" />
-
-            {/* Hero Section */}
             <div className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden pt-20 pb-10 px-4">
-                {/* Background Image & Overlay */}
-                <div 
-                    className="absolute inset-0 bg-cover bg-center z-[-2]" 
-                    style={{ backgroundImage: "url('https://static.vecteezy.com/system/resources/previews/031/691/404/non_2x/ideal-healthcare-background-with-surrealist-blurry-hospital-scene-ai-generative-free-photo.jpg')" }}
-                ></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-900/90 via-blue-900/70 to-[#050b1a] z-[-1]"></div>
-
                 <GuestNavbar auth={auth} />
-
                 <PageWrapper className="relative z-10 w-full max-w-6xl flex flex-col items-center justify-center">
-                    {/* Main Layout: Stacked on mobile, Grid on LG screens */}
                     <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-12 items-center text-center lg:text-left">
-                        
-                        {/* Hero Text */}
                         <div className="space-y-5 md:space-y-6 px-2">
                             <span className="inline-block px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-[10px] md:text-xs font-bold tracking-widest uppercase">
                                 24/7 Premium Medical Care
@@ -35,8 +22,6 @@ export default function Welcome({ auth }) {
                             <p className="text-sm md:text-lg text-blue-50/80 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                                 Clinicare provides world-class healthcare with state-of-the-art technology. Book appointments and manage records seamlessly.
                             </p>
-                            
-                            {/* Buttons: Stacked on mobile, Row on SM screens */}
                             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
                                 <Link
                                     href={route('register')}
@@ -49,8 +34,6 @@ export default function Welcome({ auth }) {
                                 </button>
                             </div>
                         </div>
-
-                        {/* Quick Actions: Smaller padding on mobile */}
                         <GlassCard className="w-full p-5 md:p-8 border-white/10 mt-6 lg:mt-0">
                             <h3 className="text-lg md:text-xl font-bold text-white mb-5">Quick Services</h3>
                             <div className="grid grid-cols-2 gap-3 md:gap-4 text-left">
@@ -70,8 +53,6 @@ export default function Welcome({ auth }) {
                     </div>
                 </PageWrapper>
             </div>
-
-            {/* Stats Bar: 2x2 on mobile, 4x1 on MD */}
             <div className="relative z-10 -mt-10 md:-mt-16 px-4">
                 <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                     {[
@@ -87,8 +68,6 @@ export default function Welcome({ auth }) {
                     ))}
                 </div>
             </div>
-
-            {/* Information Section */}
             <section className="py-16 md:py-24 px-4 max-w-6xl mx-auto">
                 <div className="text-center mb-10 md:mb-16">
                     <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">Why Choose Clinicare?</h2>
@@ -101,8 +80,6 @@ export default function Welcome({ auth }) {
                     <FeatureItem title="Modern Tech" icon="T" desc="Utilizing the latest diagnostic and surgical technology." />
                 </div>
             </section>
-
-            {/* Footer */}
             <footer className="border-t border-white/10 py-10 px-6 bg-black/20 text-center md:text-left">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="text-white font-black text-2xl tracking-tighter">

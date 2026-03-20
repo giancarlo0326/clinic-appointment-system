@@ -49,7 +49,6 @@ export default function Register() {
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Register" />
             <GuestNavbar auth={auth} showAuthLinks={false} />
-
             <PageWrapper>
                 <GlassCard className="w-full max-w-md mt-20">
                     <div className="text-center mb-8">
@@ -58,9 +57,7 @@ export default function Register() {
                         </h1>
                         <p className="text-blue-50/80 mt-2 font-medium">to clinicare, log in to your account to manage appointments.</p>
                     </div>
-
                     <form onSubmit={submit} className="space-y-6">
-                
                         <div>
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Full Name</label>
                             <input 
@@ -72,7 +69,6 @@ export default function Register() {
                             />
                             {errors.name && <p className="text-red-300 text-xs mt-1">{errors.name}</p>}
                         </div>
-
                         <div>
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Email Address</label>
                             <input 
@@ -84,7 +80,6 @@ export default function Register() {
                             />
                             {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
                         </div>
-
                         <div className="relative">
                             <label className="block text-sm font-semibold text-white mb-1.5 ml-1">Password</label>
                             <div className="relative">
@@ -101,7 +96,6 @@ export default function Register() {
                             </div>
                             {errors.password && <p className="text-red-300 text-xs mt-1">{errors.password}</p>}
                         </div>
-
                         <button 
                             type="submit" 
                             disabled={processing} 
@@ -110,7 +104,6 @@ export default function Register() {
                             {processing ? 'Signing Up...' : 'Sign Up'}
                         </button>
                     </form>
-
                     <div className="mt-8 text-center border-t border-white/10 pt-6">
                         <p className="text-sm text-blue-50/70">
                             Already have an account? <Link href={route('login')} className="text-white font-bold underline">Sign in</Link>
@@ -118,7 +111,6 @@ export default function Register() {
                     </div>
                 </GlassCard>
             </PageWrapper>
-
             <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         </div>
