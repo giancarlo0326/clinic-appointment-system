@@ -82,9 +82,12 @@ export default function Welcome({ auth }) {
             </section>
             <footer className="border-t border-white/10 py-10 px-6 bg-black/20 text-center md:text-left">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="text-white font-black text-2xl tracking-tighter">
-                        CLINI<span className="text-blue-500">CARE</span>
-                    </div>
+                    <Link href="/" className="group flex items-center gap-2 shrink-0">
+                <div className="text-white font-extrabold text-lg sm:text-xl md:text-2xl tracking-tight flex items-center gap-1 sm:gap-2">
+                    <span className="text-blue-300 text-xl sm:text-2xl md:text-3xl transition-transform group-hover:scale-110">✚</span> 
+                    <span>CLINICARE</span>
+                </div>
+            </Link>
                     <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-[11px] md:text-sm font-semibold text-blue-50/50">
                         <Link href="#" className="hover:text-white transition-colors">About Us</Link>
                         <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
