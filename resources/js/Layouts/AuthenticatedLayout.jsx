@@ -3,18 +3,10 @@ import { Link, usePage } from '@inertiajs/react';
 
 export default function AuthenticatedLayout({ user, header, children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    
-    // --- NOTIFICATION LOGIC ---
     const { flash } = usePage().props;
     const [notification, setNotification] = useState({ message: '', visible: false });
 
     useEffect(() => {
-        /**
-         * Logic: 
-         * 1. If Laravel sends a flash['success'] message, show it.
-         * 2. If no flash but it's a new session (tab just opened/login just happened), show welcome.
-         * 3. Uses sessionStorage so it resets every time the browser/tab is closed and reopened.
-         */
         if (flash?.success) {
             showToast(flash.success);
         } else if (!sessionStorage.getItem('notified_this_session')) {
@@ -36,22 +28,20 @@ export default function AuthenticatedLayout({ user, header, children }) {
     ];
 
     return (
-        <div className="min-h-screen glass-medical-gradient text-white">
+        /* Global text color set to Slate-900 for high contrast */
+        <div className="min-h-screen glass-medical-gradient text-slate-900 font-sans selection:bg-blue-100">
             
-            {/* --- SUCCESS TOASTER --- */}
+            {/* --- TOASTER (Refreshed for Light Theme) --- */}
             {notification.visible && (
                 <div className="fixed top-24 right-6 z-[110] w-[calc(100%-3rem)] max-w-md animate-in fade-in slide-in-from-right-8 duration-500">
-                    <div className="bg-emerald-500/20 backdrop-blur-xl border border-emerald-500/50 text-white p-4 rounded-2xl shadow-2xl flex items-center justify-between">
+                    <div className="bg-white/90 backdrop-blur-2xl border border-emerald-200 text-emerald-900 p-4 rounded-3xl shadow-2xl shadow-emerald-200/40 flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <span className="bg-emerald-500/40 p-1.5 rounded-full text-lg">✅</span>
-                            <p className="text-sm font-bold tracking-wide">{notification.message}</p>
+                            <span className="bg-emerald-100 p-2 rounded-2xl text-lg">✅</span>
+                            <p className="text-sm font-bold tracking-tight">{notification.message}</p>
                         </div>
-                        <button 
-                            onClick={() => setNotification({ ...notification, visible: false })} 
-                            className="p-1 hover:bg-white/10 rounded-lg transition-colors"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        <button onClick={() => setNotification({ ...notification, visible: false })} className="text-slate-400 hover:text-slate-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor font-bold">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
                     </div>
@@ -59,73 +49,66 @@ export default function AuthenticatedLayout({ user, header, children }) {
             )}
 
             {/* --- TOP NAVBAR --- */}
-            <nav className="fixed top-0 left-0 right-0 z-[100] h-20 bg-slate-900/80 backdrop-blur-xl border-b border-white/10 px-6 flex items-center justify-between">
+            <nav className="fixed top-0 left-0 right-0 z-[100] h-20 bg-white/40 backdrop-blur-xl border-b border-white/60 px-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                    <button 
-                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className="lg:hidden p-2 bg-white/5 hover:bg-white/10 rounded-xl transition-all"
-                    >
-                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isSidebarOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+                    <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden p-2.5 bg-white border border-slate-200 rounded-2xl text-slate-600 shadow-sm">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d={isSidebarOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
                         </svg>
                     </button>
 
                     <Link href="/" className="flex items-center gap-2 group">
-                        <div className="text-white font-extrabold text-lg sm:text-xl md:text-2xl tracking-tight flex items-center gap-1 sm:gap-2 shrink-0">
-                        <span className="text-blue-300 text-xl sm:text-2xl md:text-3xl">✚</span> 
-                        <span>CLINICARE</span>
-                    </div>
+                        <div className="text-slate-900 font-black text-xl md:text-2xl tracking-tighter flex items-center gap-2">
+                            <span className="text-blue-600 text-2xl drop-shadow-[0_0_8px_rgba(37,99,235,0.3)]">✚</span> 
+                            <span>CLINICARE</span>
+                        </div>
                     </Link>
                 </div>
 
                 <div className="hidden md:block">
-                    <div className="bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-xs font-mono text-blue-300 uppercase tracking-widest">
+                    <div className="bg-blue-50 border border-blue-100 px-4 py-2 rounded-2xl text-[10px] font-black text-blue-600 uppercase tracking-[0.2em]">
                         PATIENT ID: #2026-001
                     </div>
                 </div>
             </nav>
 
             {/* --- SIDEBAR --- */}
-            {isSidebarOpen && (
-                <div 
-                    className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[80] lg:hidden"
-                    onClick={() => setIsSidebarOpen(false)}
-                />
-            )}
-
             <aside className={`
-                fixed top-20 left-0 z-[90] w-64 h-[calc(100vh-5rem)]
-                bg-slate-900/50 backdrop-blur-2xl border-r border-white/10
-                transition-all duration-300 ease-in-out
+                fixed top-20 left-0 z-[90] w-72 h-[calc(100vh-5rem)]
+                bg-white/20 backdrop-blur-3xl border-r border-white/40
+                transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
             `}>
-                <div className="p-4 flex flex-col h-full">
-                    <nav className="flex-1 space-y-2">
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.label}
-                                href={item.href}
-                                className={`
-                                    flex items-center gap-3 px-4 py-3 rounded-2xl font-bold transition-all
-                                    ${route().current(item.href) 
-                                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
-                                        : 'text-white/60 hover:bg-white/10 hover:text-white'}
-                                `}
-                            >
-                                <span className="text-lg">{item.icon}</span>
-                                <span className="text-sm uppercase tracking-wide">{item.label}</span>
-                            </Link>
-                        ))}
+                <div className="p-6 flex flex-col h-full justify-between">
+                    <nav className="space-y-3">
+                        {navItems.map((item) => {
+                            const active = route().current(item.href);
+                            return (
+                                <Link
+                                    key={item.label}
+                                    href={item.href}
+                                    className={`
+                                        flex items-center gap-4 px-5 py-4 rounded-3xl font-black transition-all duration-300
+                                        ${active 
+                                            ? 'bg-blue-600 text-white shadow-xl shadow-blue-200 translate-x-1' 
+                                            : 'text-slate-500 hover:bg-white/60 hover:text-blue-600 hover:translate-x-1'}
+                                    `}
+                                >
+                                    <span className={`text-xl ${active ? 'opacity-100' : 'opacity-70'}`}>{item.icon}</span>
+                                    <span className="text-xs uppercase tracking-widest">{item.label}</span>
+                                </Link>
+                            );
+                        })}
                     </nav>
 
-                    <div className="pt-4 border-t border-white/10">
+                    <div className="pt-6 border-t border-slate-200/60">
                         <Link
                             method="post"
                             href={route('logout')}
                             as="button"
-                            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-red-400 hover:bg-red-500/10 transition-all text-sm uppercase tracking-wide"
+                            className="w-full flex items-center gap-4 px-5 py-4 rounded-3xl font-black text-red-500 hover:bg-red-50 transition-all text-xs uppercase tracking-widest"
                         >
-                            <span className="text-lg">🚪</span>
+                            <span className="text-xl">🚪</span>
                             Logout
                         </Link>
                     </div>
@@ -134,16 +117,22 @@ export default function AuthenticatedLayout({ user, header, children }) {
 
             {/* --- MAIN CONTENT --- */}
             <main className={`
-                min-h-screen pt-24 transition-all duration-300
-                lg:ml-64 px-4 sm:px-8 pb-10
+                min-h-screen pt-24 transition-all duration-500
+                lg:ml-72 px-6 sm:px-10 pb-12
             `}>
-                <div className="max-w-7xl mx-auto space-y-6">
+                <div className="max-w-6xl mx-auto">
                     {header && (
-                        <div className="mb-2">
-                            {header}
+                        <div className="mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                            {/* Header font fixed to deep slate */}
+                            <h2 className="text-4xl font-black text-slate-900 tracking-tight">
+                                {header}
+                            </h2>
+                            <div className="h-1.5 w-12 bg-blue-600 rounded-full mt-3"></div>
                         </div>
                     )}
-                    {children}
+                    <div className="animate-in fade-in zoom-in-95 duration-500">
+                        {children}
+                    </div>
                 </div>
             </main>
         </div>
