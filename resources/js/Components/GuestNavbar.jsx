@@ -1,6 +1,5 @@
 // resources/js/Components/GuestNavbar.jsx
 import { Link } from '@inertiajs/react';
-
 export default function GuestNavbar({ auth, showAuthLinks = true }) {
     return (
         <header className="absolute top-0 w-full p-4 md:p-6 flex justify-between items-center z-20 animate-fade-in-up">
@@ -10,7 +9,6 @@ export default function GuestNavbar({ auth, showAuthLinks = true }) {
                     <span>CLINICARE</span>
                 </div>
             </Link>
-            
             {showAuthLinks && (
                 <nav className="flex gap-2 sm:gap-4 items-center ml-2">
                     {auth?.user ? (

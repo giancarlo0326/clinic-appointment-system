@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
-
 export default function AuthenticatedLayout({ user, header, children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const { flash } = usePage().props;
     const [notification, setNotification] = useState({ message: '', visible: false });
-
     useEffect(() => {
         if (flash?.success) {
             showToast(flash.success);
@@ -14,24 +12,18 @@ export default function AuthenticatedLayout({ user, header, children }) {
             sessionStorage.setItem('notified_this_session', 'true');
         }
     }, [flash]);
-
     const showToast = (msg) => {
         setNotification({ message: msg, visible: true });
         setTimeout(() => setNotification({ message: '', visible: false }), 5000);
     };
-
     const navItems = [
         { label: 'Dashboard', href: route('dashboard'), icon: '📊' },
         { label: 'My Appointments', href: '#', icon: '📅' },
         { label: 'Medical Records', href: '#', icon: '📂' },
         { label: 'Profile', href: route('profile.edit'), icon: '👤' },
     ];
-
     return (
-        /* Global text color set to Slate-900 for high contrast */
         <div className="min-h-screen glass-medical-gradient text-slate-900 font-sans selection:bg-blue-100">
-            
-            {/* --- TOASTER (Refreshed for Light Theme) --- */}
             {notification.visible && (
                 <div className="fixed top-24 right-6 z-[110] w-[calc(100%-3rem)] max-w-md animate-in fade-in slide-in-from-right-8 duration-500">
                     <div className="bg-white/90 backdrop-blur-2xl border border-emerald-200 text-emerald-900 p-4 rounded-3xl shadow-2xl shadow-emerald-200/40 flex items-center justify-between">
@@ -47,8 +39,6 @@ export default function AuthenticatedLayout({ user, header, children }) {
                     </div>
                 </div>
             )}
-
-            {/* --- TOP NAVBAR --- */}
             <nav className="fixed top-0 left-0 right-0 z-[100] h-20 bg-white/40 backdrop-blur-xl border-b border-white/60 px-6 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                     <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="lg:hidden p-2.5 bg-white border border-slate-200 rounded-2xl text-slate-600 shadow-sm">
@@ -56,7 +46,6 @@ export default function AuthenticatedLayout({ user, header, children }) {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d={isSidebarOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
                         </svg>
                     </button>
-
                     <Link href="/" className="flex items-center gap-2 group">
                         <div className="text-slate-900 font-black text-xl md:text-2xl tracking-tighter flex items-center gap-2">
                             <span className="text-blue-600 text-2xl drop-shadow-[0_0_8px_rgba(37,99,235,0.3)]">✚</span> 
@@ -71,8 +60,6 @@ export default function AuthenticatedLayout({ user, header, children }) {
                     </div>
                 </div>
             </nav>
-
-            {/* --- SIDEBAR --- */}
             <aside className={`
                 fixed top-20 left-0 z-[90] w-72 h-[calc(100vh-5rem)]
                 bg-white/20 backdrop-blur-3xl border-r border-white/40
@@ -114,8 +101,6 @@ export default function AuthenticatedLayout({ user, header, children }) {
                     </div>
                 </div>
             </aside>
-
-            {/* --- MAIN CONTENT --- */}
             <main className={`
                 min-h-screen pt-24 transition-all duration-500
                 lg:ml-72 px-6 sm:px-10 pb-12
