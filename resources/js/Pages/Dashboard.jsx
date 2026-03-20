@@ -1,6 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link } from '@inertiajs/react';
-
 export default function Dashboard({ auth }) {
     return (
         <AuthenticatedLayout
@@ -8,11 +7,8 @@ export default function Dashboard({ auth }) {
             header={<h2 className="font-bold text-2xl text-white leading-tight">Patient Dashboard</h2>}
         >
             <Head title="Dashboard" />
-
             <div className="py-12 glass-medical-gradient min-h-screen">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    
-                    {/* Welcome Section */}
                     <div className="bg-white/20 backdrop-blur-md border border-white/30 overflow-hidden shadow-xl sm:rounded-3xl p-8">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                             <div>
@@ -27,8 +23,6 @@ export default function Dashboard({ auth }) {
                             </Link>
                         </div>
                     </div>
-
-                    {/* Stats Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
                             { label: 'Upcoming', value: '2', icon: '📅', color: 'bg-blue-500/20' },
@@ -44,8 +38,6 @@ export default function Dashboard({ auth }) {
                             </div>
                         ))}
                     </div>
-
-                    {/* Upcoming Appointments Table */}
                     <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-xl sm:rounded-3xl overflow-hidden">
                         <div className="p-6 border-b border-white/20">
                             <h4 className="text-xl font-bold text-white">Your Upcoming Reservations</h4>
@@ -88,7 +80,6 @@ export default function Dashboard({ auth }) {
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </AuthenticatedLayout>

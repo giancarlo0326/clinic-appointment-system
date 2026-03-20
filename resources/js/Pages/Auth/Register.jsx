@@ -3,34 +3,27 @@ import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import GuestNavbar from '@/Components/GuestNavbar';
 import GlassCard from '@/Components/GlassCard';
 import PageWrapper from '@/Components/PageWrapper'; 
-
 export default function Register() {
     const { auth } = usePage().props;
     const [showPassword, setShowPassword] = useState(false);
     const [notification, setNotification] = useState({ message: '', visible: false });
-
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '', email: '', password: '', terms: false,
     });
-
     useEffect(() => {
         if (Object.keys(errors).length > 0) showToast("Please correct the highlighted errors.");
     }, [errors]);
-
     useEffect(() => {
         return () => reset('password');
     }, []);
-
     const showToast = (msg) => {
         setNotification({ message: msg, visible: true });
         setTimeout(() => setNotification({ message: '', visible: false }), 5000);
     };
-
     const submit = (e) => {
         e.preventDefault();
         post(route('register'), { onError: () => showToast("Registration failed.") });
     };
-
     const EyeIcon = ({ visible }) => (
         visible ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -43,12 +36,10 @@ export default function Register() {
             </svg>
         )
     );
-
     return (
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Sign Up" />
             <GuestNavbar auth={auth} showAuthLinks={false} />
-            
             <PageWrapper>
                 <GlassCard className="w-full max-w-md mt-20">
                     <div className="text-center mb-8">
@@ -57,13 +48,11 @@ export default function Register() {
                         </h1>
                         <p className="text-slate-500 mt-2 font-medium">Join Clinicare to manage your health and appointments.</p>
                     </div>
-
                     {notification.visible && (
                         <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-700 text-sm font-bold text-center animate-fade-in-up">
                             {notification.message}
                         </div>
                     )}
-
                     <form onSubmit={submit} className="space-y-5">
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Full Name</label>
@@ -76,7 +65,6 @@ export default function Register() {
                             />
                             {errors.name && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.name}</p>}
                         </div>
-
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Email Address</label>
                             <input 
@@ -88,7 +76,6 @@ export default function Register() {
                             />
                             {errors.email && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.email}</p>}
                         </div>
-
                         <div className="relative">
                             <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Password</label>
                             <div className="relative">
@@ -109,7 +96,6 @@ export default function Register() {
                             </div>
                             {errors.password && <p className="text-red-600 text-xs mt-2 font-semibold ml-1">{errors.password}</p>}
                         </div>
-
                         <button 
                             type="submit" 
                             disabled={processing} 
@@ -118,7 +104,6 @@ export default function Register() {
                             {processing ? 'Creating Account...' : 'Sign Up'}
                         </button>
                     </form>
-
                     <div className="mt-8 text-center border-t border-slate-100 pt-6">
                         <p className="text-sm text-slate-500 font-medium">
                             Already have an account? <Link href={route('login')} className="text-blue-600 font-black hover:underline">Sign in</Link>
@@ -126,8 +111,6 @@ export default function Register() {
                     </div>
                 </GlassCard>
             </PageWrapper>
-
-            {/* Background elements for visual depth on white theme */}
             <div className="absolute top-[-10%] right-[-5%] w-[450px] h-[450px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none -z-10"></div>
             <div className="absolute bottom-[-10%] left-[-5%] w-[450px] h-[450px] bg-indigo-50/50 rounded-full blur-[120px] pointer-events-none -z-10"></div>
         </div>

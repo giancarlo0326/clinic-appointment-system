@@ -3,21 +3,17 @@ import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import GuestNavbar from '@/Components/GuestNavbar';
 import GlassCard from '@/Components/GlassCard';
 import PageWrapper from '@/Components/PageWrapper'; 
-
 export default function Login({ status, canResetPassword }) {
     const { auth } = usePage().props;
     const [showPassword, setShowPassword] = useState(false); // Added state
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '', password: '', remember: false,
     });
-
     useEffect(() => { return () => reset('password'); }, []);
-
     const submit = (e) => {
         e.preventDefault();
         post(route('login'));
     };
-
     const EyeIcon = ({ visible }) => (
         visible ? (
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
@@ -30,7 +26,6 @@ export default function Login({ status, canResetPassword }) {
             </svg>
         )
     );
-
     return (
         <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 glass-medical-gradient">
             <Head title="Sign In" />
@@ -43,9 +38,7 @@ export default function Login({ status, canResetPassword }) {
                         </h1>
                         <p className="text-slate-600 mt-2 font-medium">to clinicare, log in to your account to manage appointments.</p>
                     </div>
-
                     {status && <div className="mb-4 font-semibold text-sm text-emerald-600 text-center">{status}</div>}
-
                     <form onSubmit={submit} className="space-y-6">
                         <div>
                             <label className="block text-sm font-bold text-slate-700 mb-1.5 ml-1">Email Address</label>
@@ -58,7 +51,6 @@ export default function Login({ status, canResetPassword }) {
                             />
                             {errors.email && <p className="text-red-600 text-xs mt-1 font-medium">{errors.email}</p>}
                         </div>
-
                         <div className="relative">
                             <div className="flex justify-between items-center mb-1.5 ml-1">
                                 <label className="block text-sm font-bold text-slate-700">Password</label>
@@ -86,7 +78,6 @@ export default function Login({ status, canResetPassword }) {
                             </div>
                             {errors.password && <p className="text-red-600 text-xs mt-1 font-medium">{errors.password}</p>}
                         </div>
-
                         <button 
                             type="submit" 
                             disabled={processing} 
@@ -95,7 +86,6 @@ export default function Login({ status, canResetPassword }) {
                             {processing ? 'Signing in...' : 'Sign In'}
                         </button>
                     </form>
-
                     <div className="mt-8 text-center border-t border-slate-200 pt-6">
                         <p className="text-sm text-slate-500 font-medium">
                             New to Clinicare? <Link href={route('register')} className="text-blue-600 font-black underline">Sign Up</Link>

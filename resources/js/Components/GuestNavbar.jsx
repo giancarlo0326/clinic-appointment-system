@@ -11,7 +11,6 @@ export default function GuestNavbar({ auth, showAuthLinks = true }) {
                 </div>
             </Link>
             
-            {/* Only render the nav links if showAuthLinks is true */}
             {showAuthLinks && (
                 <nav className="flex gap-2 sm:gap-4 items-center ml-2">
                     {auth?.user ? (

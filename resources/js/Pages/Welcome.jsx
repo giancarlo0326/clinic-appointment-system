@@ -2,15 +2,12 @@ import { Head, Link } from '@inertiajs/react';
 import GuestNavbar from '@/Components/GuestNavbar';
 import GlassCard from '@/Components/GlassCard';
 import PageWrapper from '@/Components/PageWrapper';
-
 export default function Welcome({ auth }) {
     return (
-        /* Use the class from your app.css here */
         <div className="glass-medical-gradient min-h-screen">
             <Head title="Home" />
             <div className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden pt-20 pb-10 px-4">
                 <GuestNavbar auth={auth} />
-                
                 <PageWrapper className="relative z-10 w-full max-w-6xl flex flex-col items-center justify-center">
                     <div className="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-12 items-center text-center lg:text-left">
                         <div className="space-y-5 md:space-y-6 px-2">
@@ -36,8 +33,6 @@ export default function Welcome({ auth }) {
                                 </button>
                             </div>
                         </div>
-
-                        {/* High-visibility GlassCard using your updated component */}
                         <GlassCard className="w-full p-5 md:p-8 mt-6 lg:mt-0">
                             <h3 className="text-lg md:text-xl font-black text-slate-900 mb-5">Quick Services</h3>
                             <div className="grid grid-cols-2 gap-3 md:gap-4 text-left">
@@ -56,13 +51,9 @@ export default function Welcome({ auth }) {
                         </GlassCard>
                     </div>
                 </PageWrapper>
-
-                {/* Background Glows for Light Theme */}
                 <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none"></div>
                 <div className="absolute bottom-[10%] left-[-5%] w-[400px] h-[400px] bg-indigo-50/60 rounded-full blur-[100px] pointer-events-none"></div>
             </div>
-
-            {/* Stats Section */}
             <div className="relative z-10 -mt-10 md:-mt-16 px-4">
                 <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
                     {[
@@ -78,22 +69,17 @@ export default function Welcome({ auth }) {
                     ))}
                 </div>
             </div>
-
-            {/* Features Section */}
             <section className="py-16 md:py-24 px-4 max-w-6xl mx-auto">
                 <div className="text-center mb-12 md:mb-20">
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-4">Why Choose Clinicare?</h2>
                     <p className="text-sm md:text-lg text-slate-500 max-w-2xl mx-auto font-medium">Professional excellence with a compassionate touch.</p>
                 </div>
-
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
                     <FeatureItem title="Qualified Doctors" icon="S" desc="Board-certified specialists with international experience." />
                     <FeatureItem title="Emergency 24/7" icon="E" desc="Dedicated trauma response team ready at all times." />
                     <FeatureItem title="Modern Tech" icon="T" desc="Utilizing the latest diagnostic and surgical technology." />
                 </div>
             </section>
-
-            {/* Footer */}
             <footer className="border-t border-slate-100 py-12 px-6 bg-white/40 backdrop-blur-md text-center md:text-left mt-10">
                 <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
                     <Link href="/" className="group flex items-center gap-2 shrink-0">
@@ -115,7 +101,6 @@ export default function Welcome({ auth }) {
         </div>
     );
 }
-
 function FeatureItem({ title, desc, icon }) {
     return (
         <div className="p-8 md:p-10 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 hover:-translate-y-1 transition-all group">
