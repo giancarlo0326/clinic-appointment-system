@@ -9,9 +9,9 @@
 }
 
 :root {
-    --coral: #F07167;
-    --coral-light: #FDDDD9;
-    --coral-soft: #FEF0EE;
+    --primary: #2563EB;
+    --primary-light: #BFDBFE;
+    --primary-soft: #EFF6FF;
     --white: #FFFFFF;
     --gray-50: #F9FAFB;
     --gray-200: #E5E7EB;
@@ -110,7 +110,7 @@ body {
 }
 
 .topbar-logo span.dot {
-    color: var(--coral);
+    color: var(--primary);
 }
 
 .topbar-search {
@@ -134,7 +134,7 @@ body {
 }
 
 .topbar-search input:focus {
-    border-color: var(--coral);
+    border-color: var(--primary);
 }
 
 .topbar-search svg {
@@ -167,9 +167,9 @@ body {
 }
 
 .topbar-icon-btn:hover {
-    background: var(--coral-soft);
-    border-color: var(--coral-light);
-    color: var(--coral);
+    background: var(--primary-soft);
+    border-color: var(--primary-light);
+    color: var(--primary);
 }
 
 .badge {
@@ -178,7 +178,7 @@ body {
     right: -4px;
     width: 17px;
     height: 17px;
-    background: var(--coral);
+    background: var(--primary);
     border-radius: 50%;
     font-size: 9px;
     font-weight: 700;
@@ -194,16 +194,16 @@ body {
     width: 38px;
     height: 38px;
     border-radius: 10px;
-    background: var(--coral-light);
+    background: var(--primary-light);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 14px;
-    color: var(--coral);
+    color: var(--primary);
     cursor: pointer;
-    border: 2px solid var(--coral-light);
+    border: 2px solid var(--primary-light);
 }
 
 .avatar-online {
@@ -274,15 +274,15 @@ body {
 }
 
 .nav-link:hover {
-    background: var(--coral-soft);
-    color: var(--coral);
+    background: var(--primary-soft);
+    color: var(--primary);
 }
 
 .nav-link.active {
-    background: var(--coral);
+    background: var(--primary);
     color: #fff;
     font-weight: 600;
-    box-shadow: 0 4px 14px rgba(240, 113, 103, 0.35);
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.30);
 }
 
 .nav-link .nav-icon {
@@ -302,13 +302,13 @@ body {
 }
 
 .nav-link:hover:not(.active) .nav-icon {
-    background: var(--coral-light);
+    background: var(--primary-light);
 }
 
 /* Sidebar user card */
 .sidebar-user-card {
-    background: var(--coral-soft);
-    border: 1.5px solid var(--coral-light);
+    background: var(--primary-soft);
+    border: 1.5px solid var(--primary-light);
     border-radius: 12px;
     padding: 12px;
     display: flex;
@@ -321,14 +321,14 @@ body {
     width: 38px;
     height: 38px;
     border-radius: 9px;
-    background: var(--coral-light);
+    background: var(--primary-light);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 14px;
-    color: var(--coral);
+    color: var(--primary);
     flex-shrink: 0;
 }
 
@@ -357,7 +357,7 @@ body {
     border-radius: 10px;
     font-size: 13.5px;
     font-weight: 600;
-    color: var(--coral);
+    color: #ef4444;
     background: none;
     border: none;
     cursor: pointer;
@@ -374,7 +374,7 @@ body {
     width: 36px;
     height: 36px;
     border-radius: 9px;
-    background: #ffe4e1;
+    background: #fee2e2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -406,7 +406,7 @@ body {
 .page-title-underline {
     width: 36px;
     height: 3.5px;
-    background: var(--coral);
+    background: var(--primary);
     border-radius: 99px;
     margin-top: 8px;
 }
